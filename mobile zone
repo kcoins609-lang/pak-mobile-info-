@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MobileZone — Wholesale Mobiles</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #00e676;
+    --green-dark: #00c853;
+    --bg: #0a0a0a;
+    --card: #111111;
+    --card2: #161616;
+    --border: #222;
+    --text: #f0f0f0;
+    --muted: #888;
+    --accent: #ff6b35;
+    --wa: #25D366;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+
+/* ── HEADER ── */
+header {
+position: sticky; top: 0; z-index: 100;
+background: rgba(10,10,10,0.92);
+backdrop-filter: blur(16px);
+border-bottom: 1px solid var(–border);
+padding: 14px 20px;
+display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px;
+letter-spacing: 2px;
+color: var(–green);
+text-shadow: 0 0 20px rgba(0,230,118,0.4);
+}
+.logo span { color: var(–text); }
+.badge-ws {
+background: linear-gradient(135deg, var(–green), var(–green-dark));
+color: #000;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1.5px;
+padding: 3px 8px;
+border-radius: 20px;
+text-transform: uppercase;
+margin-left: 8px;
+vertical-align: middle;
+}
+.header-right {
+display: flex; align-items: center; gap: 12px;
+}
+.wa-header {
+display: flex; align-items: center; gap: 6px;
+background: var(–wa);
+color: #fff;
+font-size: 13px;
+font-weight: 600;
+padding: 8px 14px;
+border-radius: 8px;
+text-decoration: none;
+transition: transform .2s, box-shadow .2s;
+}
+.wa-header:hover { transform: scale(1.04); box-shadow: 0 0 16px rgba(37,211,102,0.4); }
+.wa-header svg { width: 16px; height: 16px; fill: #fff; }
+
+/* ── HERO ── */
+.hero {
+padding: 60px 20px 40px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: ‘’;
+position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+width: 600px; height: 300px;
+background: radial-gradient(ellipse, rgba(0,230,118,0.12) 0%, transparent 70%);
+pointer-events: none;
+}
+.hero-tag {
+display: inline-block;
+font-size: 11px; font-weight: 600; letter-spacing: 2px;
+text-transform: uppercase; color: var(–green);
+border: 1px solid rgba(0,230,118,0.3);
+padding: 5px 14px; border-radius: 20px;
+margin-bottom: 18px;
+animation: fadeUp .6s ease both;
+}
+.hero h1 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(48px, 12vw, 80px);
+line-height: 1;
+letter-spacing: 3px;
+animation: fadeUp .7s .1s ease both;
+}
+.hero h1 em { color: var(–green); font-style: normal; }
+.hero p {
+margin-top: 14px;
+color: var(–muted);
+font-size: 15px;
+max-width: 340px; margin-inline: auto;
+animation: fadeUp .7s .2s ease both;
+}
+.hero-stats {
+display: flex; justify-content: center; gap: 28px;
+margin-top: 30px;
+animation: fadeUp .7s .3s ease both;
+}
+.stat { text-align: center; }
+.stat-val {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 30px; color: var(–green); line-height: 1;
+}
+.stat-label { font-size: 11px; color: var(–muted); letter-spacing: .5px; }
+
+/* ── TRUST BANNER ── */
+.trust-bar {
+display: flex; overflow: hidden;
+border-top: 1px solid var(–border);
+border-bottom: 1px solid var(–border);
+margin: 10px 0;
+background: var(–card);
+}
+.trust-track {
+display: flex; gap: 48px;
+padding: 12px 24px;
+white-space: nowrap;
+animation: marquee 20s linear infinite;
+flex-shrink: 0;
+}
+.trust-item {
+font-size: 12px; font-weight: 600; letter-spacing: 1px;
+color: var(–muted); text-transform: uppercase;
+display: flex; align-items: center; gap: 8px;
+}
+.trust-item .dot { width: 6px; height: 6px; background: var(–green); border-radius: 50%; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── FILTERS ── */
+.filters {
+padding: 18px 16px 8px;
+display: flex; gap: 8px; flex-wrap: wrap;
+animation: fadeUp .7s .4s ease both;
+}
+.filter-btn {
+font-family: ‘Outfit’, sans-serif;
+font-size: 12px; font-weight: 600;
+padding: 7px 16px;
+border-radius: 20px;
+border: 1px solid var(–border);
+background: transparent; color: var(–muted);
+cursor: pointer; transition: all .2s;
+letter-spacing: .5px;
+}
+.filter-btn.active, .filter-btn:hover {
+background: var(–green);
+color: #000; border-color: var(–green);
+}
+
+/* ── SECTION TITLE ── */
+.section-head {
+padding: 24px 16px 4px;
+display: flex; align-items: center; gap: 12px;
+}
+.section-head h2 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px; letter-spacing: 2px;
+}
+.section-head .line {
+flex: 1; height: 1px; background: var(–border);
+}
+.section-head .count {
+font-size: 12px; color: var(–muted);
+}
+
+/* ── GRID ── */
+.grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 12px;
+padding: 10px 12px 30px;
+}
+
+/* ── CARD ── */
+.card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 16px;
+overflow: hidden;
+position: relative;
+transition: transform .2s, border-color .2s;
+animation: fadeUp .5s ease both;
+}
+.card:hover { transform: translateY(-3px); border-color: rgba(0,230,118,0.3); }
+.card.new-model::before {
+content: ‘NEW’;
+position: absolute; top: 10px; left: 10px; z-index: 2;
+background: var(–green); color: #000;
+font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+padding: 3px 7px; border-radius: 4px;
+}
+.card.hot::before {
+content: ‘HOT 🔥’;
+background: var(–accent); color: #fff;
+}
+.card-img {
+width: 100%; aspect-ratio: 1;
+display: flex; align-items: center; justify-content: center;
+background: var(–card2);
+font-size: 64px;
+position: relative;
+overflow: hidden;
+}
+.card-img img {
+width: 100%; height: 100%;
+object-fit: cover;
+transition: transform .35s ease;
+display: block;
+}
+.card:hover .card-img img { transform: scale(1.06); }
+.card-img .battery-tag {
+position: absolute; bottom: 8px; right: 8px;
+background: rgba(0,0,0,0.8);
+border: 1px solid rgba(0,230,118,0.4);
+color: var(–green);
+font-size: 10px; font-weight: 600;
+padding: 3px 7px; border-radius: 5px;
+display: flex; align-items: center; gap: 3px;
+}
+.card-body { padding: 12px; }
+.card-brand {
+font-size: 10px; font-weight: 600;
+text-transform: uppercase; letter-spacing: 1.5px;
+color: var(–muted); margin-bottom: 3px;
+}
+.card-name {
+font-size: 14px; font-weight: 600; line-height: 1.2;
+margin-bottom: 6px;
+}
+.card-specs {
+display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;
+}
+.spec-chip {
+font-size: 10px; font-weight: 500;
+background: var(–card2);
+border: 1px solid var(–border);
+padding: 2px 7px; border-radius: 4px;
+color: var(–muted);
+}
+.price-row {
+display: flex; align-items: center; justify-content: space-between;
+margin-bottom: 10px;
+}
+.price-label {
+font-size: 11px; color: var(–muted);
+}
+.price-ws {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 18px; color: var(–green);
+letter-spacing: 1px;
+}
+.price-ws small {
+font-family: ‘Outfit’, sans-serif;
+font-size: 10px; color: var(–muted);
+font-weight: 400; letter-spacing: 0;
+display: block; margin-top: -2px;
+}
+
+/* ── BUY BUTTON ── */
+.btn-buy {
+width: 100%;
+display: flex; align-items: center; justify-content: center; gap: 6px;
+background: var(–wa);
+color: #fff;
+font-family: ‘Outfit’, sans-serif;
+font-size: 13px; font-weight: 700;
+padding: 10px;
+border-radius: 10px;
+border: none; cursor: pointer;
+text-decoration: none;
+transition: background .2s, transform .15s, box-shadow .2s;
+letter-spacing: .3px;
+}
+.btn-buy:hover {
+background: #1ebe5d;
+transform: scale(1.02);
+box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+}
+.btn-buy:active { transform: scale(0.97); }
+.btn-buy svg { width: 15px; height: 15px; fill: #fff; flex-shrink: 0; }
+
+/* ── MODAL ── */
+.modal-overlay {
+display: none;
+position: fixed; inset: 0; z-index: 200;
+background: rgba(0,0,0,0.85);
+backdrop-filter: blur(8px);
+align-items: flex-end;
+justify-content: center;
+}
+.modal-overlay.show { display: flex; animation: overlayIn .2s ease; }
+.modal {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 24px 24px 0 0;
+width: 100%; max-width: 480px;
+padding: 30px 24px 40px;
+text-align: center;
+animation: slideUp .3s cubic-bezier(.16,1,.3,1);
+}
+.modal-handle {
+width: 40px; height: 4px;
+background: var(–border);
+border-radius: 2px;
+margin: 0 auto 24px;
+}
+.modal-icon {
+width: 70px; height: 70px;
+background: rgba(37,211,102,0.1);
+border: 2px solid rgba(37,211,102,0.3);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+margin: 0 auto 16px;
+font-size: 32px;
+}
+.modal h3 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 26px; letter-spacing: 2px;
+margin-bottom: 6px;
+}
+.modal-product {
+font-size: 13px; color: var(–muted); margin-bottom: 18px;
+}
+.modal-number {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 38px;
+color: var(–green);
+letter-spacing: 3px;
+text-shadow: 0 0 30px rgba(0,230,118,0.3);
+margin-bottom: 6px;
+}
+.modal-hint {
+font-size: 12px; color: var(–muted); margin-bottom: 24px;
+}
+.modal-note {
+font-size: 12px; color: var(–muted);
+background: var(–card2); border: 1px solid var(–border);
+padding: 10px 14px; border-radius: 10px;
+margin-bottom: 20px; line-height: 1.5;
+}
+.modal-note strong { color: var(–green); }
+.btn-wa-open {
+display: flex; align-items: center; justify-content: center; gap: 8px;
+width: 100%;
+background: var(–wa); color: #fff;
+font-family: ‘Outfit’, sans-serif;
+font-size: 15px; font-weight: 700;
+padding: 14px; border-radius: 12px;
+border: none; cursor: pointer;
+text-decoration: none;
+margin-bottom: 10px;
+transition: background .2s, transform .15s;
+}
+.btn-wa-open:hover { background: #1ebe5d; transform: scale(1.02); }
+.btn-wa-open svg { width: 20px; height: 20px; fill: #fff; }
+.btn-close-modal {
+background: transparent; border: 1px solid var(–border);
+color: var(–muted); font-family: ‘Outfit’, sans-serif;
+font-size: 13px; font-weight: 500;
+padding: 10px; width: 100%; border-radius: 10px;
+cursor: pointer; transition: border-color .2s, color .2s;
+}
+.btn-close-modal:hover { border-color: var(–text); color: var(–text); }
+
+/* ── FOOTER ── */
+footer {
+padding: 30px 20px;
+text-align: center;
+border-top: 1px solid var(–border);
+color: var(–muted); font-size: 12px; line-height: 1.8;
+}
+footer .f-logo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 22px; color: var(–green);
+letter-spacing: 2px; display: block; margin-bottom: 6px;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp {
+from { transform: translateY(100%); }
+to   { transform: translateY(0); }
+}
+
+/* stagger cards */
+.card:nth-child(1) { animation-delay: .05s; }
+.card:nth-child(2) { animation-delay: .10s; }
+.card:nth-child(3) { animation-delay: .15s; }
+.card:nth-child(4) { animation-delay: .20s; }
+.card:nth-child(5) { animation-delay: .25s; }
+.card:nth-child(6) { animation-delay: .30s; }
+.card:nth-child(7) { animation-delay: .35s; }
+.card:nth-child(8) { animation-delay: .40s; }
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header>
+  <div class="logo">Mobile<span>Zone</span> <span class="badge-ws">Wholesale</span></div>
+  <div class="header-right">
+    <a class="wa-header" href="https://wa.me/923376086183">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-tag">📱 Wholesale Prices — No Retail Markup</div>
+  <h1>OLD & <em>NEW</em><br>MOBILES</h1>
+  <p>All brands. Best wholesale prices. Battery health 90%+. Direct contact via WhatsApp.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val">100+</div><div class="stat-label">Models</div></div>
+    <div class="stat"><div class="stat-val">90%+</div><div class="stat-label">Battery</div></div>
+    <div class="stat"><div class="stat-val">WS</div><div class="stat-label">Prices</div></div>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+
+<div class="trust-bar">
+  <div class="trust-track">
+    <span class="trust-item"><span class="dot"></span> Apple iPhones</span>
+    <span class="trust-item"><span class="dot"></span> Samsung Galaxy</span>
+    <span class="trust-item"><span class="dot"></span> Xiaomi / Redmi</span>
+    <span class="trust-item"><span class="dot"></span> Oppo / Realme</span>
+    <span class="trust-item"><span class="dot"></span> Vivo</span>
+    <span class="trust-item"><span class="dot"></span> OnePlus</span>
+    <span class="trust-item"><span class="dot"></span> Tecno / Infinix</span>
+    <span class="trust-item"><span class="dot"></span> Battery 90%+ Guaranteed</span>
+    <span class="trust-item"><span class="dot"></span> Apple iPhones</span>
+    <span class="trust-item"><span class="dot"></span> Samsung Galaxy</span>
+    <span class="trust-item"><span class="dot"></span> Xiaomi / Redmi</span>
+    <span class="trust-item"><span class="dot"></span> Oppo / Realme</span>
+    <span class="trust-item"><span class="dot"></span> Vivo</span>
+    <span class="trust-item"><span class="dot"></span> OnePlus</span>
+    <span class="trust-item"><span class="dot"></span> Tecno / Infinix</span>
+    <span class="trust-item"><span class="dot"></span> Battery 90%+ Guaranteed</span>
+  </div>
+</div>
+
+<!-- FILTERS -->
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+  <button class="filter-btn" onclick="filterCards('apple', this)">🍎 Apple</button>
+  <button class="filter-btn" onclick="filterCards('samsung', this)">Samsung</button>
+  <button class="filter-btn" onclick="filterCards('xiaomi', this)">Xiaomi</button>
+  <button class="filter-btn" onclick="filterCards('oppo', this)">Oppo</button>
+  <button class="filter-btn" onclick="filterCards('vivo', this)">Vivo</button>
+  <button class="filter-btn" onclick="filterCards('old', this)">Used</button>
+  <button class="filter-btn" onclick="filterCards('new', this)">New</button>
+</div>
+
+<!-- NEW ARRIVALS -->
+
+<div class="section-head">
+  <h2>🔥 Hot Deals</h2>
+  <div class="line"></div>
+  <span class="count">All Wholesale</span>
+</div>
+
+<!-- GRID -->
+
+<div class="grid" id="phoneGrid">
+
+  <!-- iPhone 15 Pro Max -->
+
+  <div class="card new-model" data-cat="apple new">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg" alt="iPhone 15 Pro Max" onerror="this.style.display='none'"><div class="battery-tag">🔋 95%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Apple</div>
+      <div class="card-name">iPhone 15 Pro Max</div>
+      <div class="card-specs">
+        <span class="spec-chip">256GB</span>
+        <span class="spec-chip">Titanium</span>
+        <span class="spec-chip">5G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'iPhone 15 Pro Max 256GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Samsung S24 Ultra -->
+
+  <div class="card hot" data-cat="samsung new">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-ultra-5g-1.jpg" alt="Samsung Galaxy S24 Ultra" onerror="this.style.display='none'"><div class="battery-tag">🔋 92%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Samsung</div>
+      <div class="card-name">Galaxy S24 Ultra</div>
+      <div class="card-specs">
+        <span class="spec-chip">512GB</span>
+        <span class="spec-chip">S-Pen</span>
+        <span class="spec-chip">5G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'Samsung Galaxy S24 Ultra 512GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- iPhone 13 -->
+
+  <div class="card" data-cat="apple old">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-01.jpg" alt="iPhone 13" onerror="this.style.display='none'"><div class="battery-tag">🔋 91%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Apple</div>
+      <div class="card-name">iPhone 13</div>
+      <div class="card-specs">
+        <span class="spec-chip">128GB</span>
+        <span class="spec-chip">Used</span>
+        <span class="spec-chip">5G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'iPhone 13 128GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Xiaomi 14 Pro -->
+
+  <div class="card new-model" data-cat="xiaomi new">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-14-pro-1.jpg" alt="Xiaomi 14 Pro" onerror="this.style.display='none'"><div class="battery-tag">🔋 98%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Xiaomi</div>
+      <div class="card-name">Xiaomi 14 Pro</div>
+      <div class="card-specs">
+        <span class="spec-chip">256GB</span>
+        <span class="spec-chip">Leica Cam</span>
+        <span class="spec-chip">5G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'Xiaomi 14 Pro 256GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Oppo Reno 11 -->
+
+  <div class="card" data-cat="oppo new">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/oppo/oppo-reno11-pro-5g-1.jpg" alt="Oppo Reno 11 Pro" onerror="this.style.display='none'"><div class="battery-tag">🔋 97%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Oppo</div>
+      <div class="card-name">Reno 11 Pro</div>
+      <div class="card-specs">
+        <span class="spec-chip">256GB</span>
+        <span class="spec-chip">80W Fast</span>
+        <span class="spec-chip">5G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'Oppo Reno 11 Pro 256GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Samsung A55 -->
+
+  <div class="card" data-cat="samsung new">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a55-5g-1.jpg" alt="Samsung Galaxy A55" onerror="this.style.display='none'"><div class="battery-tag">🔋 99%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Samsung</div>
+      <div class="card-name">Galaxy A55 5G</div>
+      <div class="card-specs">
+        <span class="spec-chip">128GB</span>
+        <span class="spec-chip">OIS Cam</span>
+        <span class="spec-chip">5G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'Samsung Galaxy A55 5G 128GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Vivo V30 -->
+
+  <div class="card" data-cat="vivo new">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/vivo/vivo-v30-pro-5g-1.jpg" alt="Vivo V30 Pro" onerror="this.style.display='none'"><div class="battery-tag">🔋 96%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Vivo</div>
+      <div class="card-name">V30 Pro</div>
+      <div class="card-specs">
+        <span class="spec-chip">256GB</span>
+        <span class="spec-chip">Zeiss</span>
+        <span class="spec-chip">4G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'Vivo V30 Pro 256GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- iPhone 11 (Used) -->
+
+  <div class="card" data-cat="apple old">
+    <div class="card-img"><img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-2019.jpg" alt="iPhone 11" onerror="this.style.display='none'"><div class="battery-tag">🔋 90%</div></div>
+    <div class="card-body">
+      <div class="card-brand">Apple</div>
+      <div class="card-name">iPhone 11</div>
+      <div class="card-specs">
+        <span class="spec-chip">64GB</span>
+        <span class="spec-chip">Used</span>
+        <span class="spec-chip">4G</span>
+      </div>
+      <div class="price-row">
+        <div><div class="price-label">Wholesale</div><div class="price-ws">Contact Us<small>Price on WhatsApp</small></div></div>
+      </div>
+      <a class="btn-buy" href="#" onclick="openModal(event,'iPhone 11 64GB')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Buy via WhatsApp
+      </a>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- FOOTER -->
+
+<footer>
+  <span class="f-logo">MobileZone</span>
+  All Old & New Mobiles — Wholesale Prices<br>
+  Battery Health 90%+ Guaranteed<br><br>
+  📞 WhatsApp: <strong style="color:var(--green)">0337-6086183</strong>
+</footer>
+
+<!-- WHATSAPP MODAL -->
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeOnOverlay(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-icon">💬</div>
+    <h3>Contact to Buy</h3>
+    <p class="modal-product" id="modalProduct">iPhone 15 Pro Max</p>
+    <div class="modal-number">0337-6086183</div>
+    <p class="modal-hint">WhatsApp us for price & availability</p>
+    <div class="modal-note">
+      ✅ <strong>Battery Health 90%+</strong> guaranteed<br>
+      ✅ Wholesale prices — no retail markup<br>
+      ✅ Old & New mobiles available
+    </div>
+    <a class="btn-wa-open" id="waLink" href="#" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Open WhatsApp Now
+    </a>
+    <button class="btn-close-modal" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+  const WA_NUMBER = '923376086183';
+
+  function openModal(e, product) {
+    e.preventDefault();
+    document.getElementById('modalProduct').textContent = 'Interested in: ' + product;
+    const msg = encodeURIComponent('Hi! I am interested in ' + product + '. Please share the wholesale price. (Battery 90%+)');
+    document.getElementById('waLink').href = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
+    document.getElementById('modalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function closeOnOverlay(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  function filterCards(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(card => {
+      const cats = card.dataset.cat || '';
+      card.style.display = (cat === 'all' || cats.includes(cat)) ? '' : 'none';
+    });
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Fallback: if image fails, show a nice placeholder
+  document.querySelectorAll('.card-img img').forEach(img => {
+    img.addEventListener('error', function() {
+      this.parentElement.style.fontSize = '56px';
+      this.parentElement.innerHTML = this.parentElement.innerHTML.replace(/<img[^>]*>/, '📱');
+    });
+  });
+</script>
+
+</body>
+</html>
